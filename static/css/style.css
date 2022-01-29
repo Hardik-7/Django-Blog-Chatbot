@@ -1,0 +1,43 @@
+
+.img-fluid
+{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 3%;
+  max-width: 110px;
+  margin-bottom: 1%;
+}
+.form-control
+{
+  width: 500px;
+  
+  
+}
+.container-from
+{
+  
+  border: brown;
+  
+}
+
+.card-body {
+    position: relative;
+    display: block;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid rgba(0,0,0,.125);
+    border-radius: .25rem;
+ 
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8%;
+    max-width: 201px;
+
+    width: 347px;
+    color: black;
+}
+

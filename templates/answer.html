@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block title %} Feedback {% endblock title %}
+
+{% block body %}
+<div class="container">
+  <div class="container-fluid">
+  <div class="row mx-lg-4">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8">
+          <img src="/static/img/iconbot.png" class="img-fluid" alt="iconimg">
+      </div>
+      <div class="col-sm-2"></div>
+  </div>
+  <div class="row">
+      <div class="col-sm-2">
+  
+      </div>
+
+      <div class="col-sm-8">
+      <form method="GET" action="/bot/search" class="d-flex justify-content-center">
+          {% csrf_token %}
+          <input class="form-control me-2" type="search" id="answer" name="answer" placeholder="Ask me.."
+              aria-label="Search">
+              <button  id="ask"class="btn btn-primary " type="submit">Ask</button>
+      </form>
+      </div>
+      <div class="col-sm-2">
+  
+      </div>
+  </div>
+</div>
+
+  <div class="row m-4">
+      <div class="col-sm-2">
+  
+      </div>
+      <div class="col-sm-8 d-flex justify-content-center" id="box" style="display: none;">
+          <div class="card text-white bg-primary mb-3"  style="max-width: 30rem;  " >
+  
+              <div class="card-body">
+                  <h5 class="card-title">Primary card title</h5>
+                  <p class="card-text">Some quick example text to build on the card title and make up the bulk of the
+                      card's content.</p>
+              </div>
+          </div>
+      </div>
+      <div class="col-sm-2">
+  
+      </div>
+  </div>
+  
+</div>
+
+
+
+{% endblock body %}
+<div class="col-sm-2">
+
+</div>
+<div class="col-sm-8 d-flex justify-content-center" id="box" style="display: none;">
+    <div class="card text-white bg-primary mb-3" style="max-width: 60rem;  ">
+
+        <div class="card-body">
+            <h5 class="card-title">Bot replay</h5>
+           <p id="ans"> {{i.Answer|safe}} </p>
+        </div>
+    </div>
+</div>
+<div class="col-sm-2">
+
+</div>
+</div>
+
+allquery=[]
+#if len(query)>78:
+ans=FAQ.objects.values('question')
+anstemps={item['question'] for item in ans}
+for anstemp in anstemps:
+  resulttemp=FAQ.objects.filter(question=anstemp)
+  result=[item for item in resulttemp if searchMatch(mystring, item)]
+  n = len(result)
+  nSlides = n // 4 + ceil((n / 4) - (n // 4))
+  if len(result) != 0:
+      allquery.append([result, range(1, nSlides), nSlides])
+  
+#ans = FAQ.objects.filter(Q(keyword_1__icontains=query) | Q(keyword_2__icontains=query) | Q(keyword_3__icontains=query) | Q(keyword_4__icontains=query) | Q(keyword_5__icontains=query))
+#if query.count()==0:
+
+
+params={'allquery': allquery} 

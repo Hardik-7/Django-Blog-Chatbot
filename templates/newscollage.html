@@ -1,0 +1,37 @@
+{% extends "base_blog.html" %}
+{% load custom_tags %}
+
+{% block title %} Collage News {% endblock title %}
+
+{% block body %}
+<div class="jumbotron">
+    <center><h1>GTU NEWS</h1>
+       <a href="{% url 'collagenews' %}" class="btn btn-danger">Refresh News</a>
+    
+</center>
+</div>
+<div class="container">
+    <div class="row">
+        <div class="col-6">
+  
+            
+
+
+            
+                <h3 class="text-centre"> News from Times of india</h3>
+                {% for link,title in paras.items %}
+                    
+                <a href="{{link}}" target="_blank" rel="noopener noreferrer">{% splitFunc title as data %}{{data|first}}</a>
+                
+                <p>{% getValueFromIndex data 1 as pubdate %} {{pubdate}}</p>
+                <p>{{data|last}}</p>
+            
+                <hr>
+                 
+                {% endfor %}
+                <br>
+        </div>
+        
+    </div>
+</div>
+{% endblock body %}

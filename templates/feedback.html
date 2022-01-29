@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %} Feedback {% endblock title %}
+
+{% block body %}
+  this my feedback
+{% endblock body %}
+{% if |length < 1 %}
+<div class="row m-4">
+    <div class="col-sm-2">
+
+    </div>
+    <div class="col-sm-8 d-flex justify-content-center" id="box" style="display: none;">
+        <div class="card text-white bg-primary mb-3" style="max-width: 30rem;  ">
+
+            <div class="card-body">
+                <h5 class="card-title">No Result Found</h5>
+                Your search query : <b>{{query}}</b> did not match any documents. <br>
+                Suggestions:
+                <ul>
+                    <li>Make sure that all words are spelled correctly.</li>
+                    <li>Try more general keywords.</li>
+                    <li> Try fewer keywords.</li>
+                    <li> Try different keywords.</li>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-2">
+
+    </div>
+</div>

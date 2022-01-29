@@ -1,0 +1,56 @@
+{% extends "base_blog.html" %}
+
+{% block css %}
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet"/>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+  rel="stylesheet"
+/>
+<!-- MDB -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.css" rel="stylesheet"/>
+{% endblock css %}
+{% block title %} News {% endblock title %}
+
+
+{% block body %}
+
+<div class="container my-5 mx-5">
+
+
+  <div class="row my-2 ">
+      {% for item in newspost %}
+            
+          <div class="col-md-6" >
+              <div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+                  <div class="col p-4 d-flex flex-column position-static">
+                      <strong class="d-inline-block mb-2 text-primary">{{item.title}}</strong>
+                      <h3 class="mb-0">{{item.headline_1|slice:"0:50"}}..</h3>
+                      <div class="mb-1 text-muted"><p>by</p>{{item.author}} {{item.pub_date}}</div>
+                      <p class="card-text mb-auto">{{item.headline_2}}</p>
+                      <a href="newspost/{{item.news_id}}" class="stretched-link">Continue reading</a>
+                  </div>
+                  <div class="col-auto d-none d-lg-block">
+                      <img src="/media/{{item.thumbnail}}" class="bd-placeholder-img" width="200" height="250"
+                          aria-label="Placeholder: Thumbnail"/>
+  
+                  </div>
+              </div>
+          </div>
+  {% if forloop.counter|divisibleby:2 %}
+      </div><div class="row my-2">
+      {% endif %}
+  
+      {% endfor %}
+  
+  </div>
+
+
+
+</div>
+<!-- News jumbotron -->
+
+
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.3.0/mdb.min.js"></script>
+
+{% endblock body %}
